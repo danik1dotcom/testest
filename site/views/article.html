@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статья - VLOGE</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <a href="/" class="logo">
+                    <img src="/img/logo/logo.png" alt="VLOGE" class="logo__img">
+                </a>
+                
+                <div class="burger" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <nav class="nav" id="nav">
+                    <a href="/" class="nav__link">Все</a>
+                    <a href="/useful-links" class="nav__link">Полезные ссылки</a>
+                    <a href="/resources" class="nav__link">Ресурсы</a>
+                    <a href="/about" class="nav__link">О нас</a>
+                </nav>
+
+                <div class="header__actions" id="headerActions">
+                    <a href="/login" class="btn-login">Войти</a>
+                    <a href="/register" class="btn-register">Регистрация</a>
+                </div>
+
+                <div class="user-profile" id="userProfile">
+                    <button class="user-profile__btn" id="profileBtn">
+                        <div class="user-profile__avatar" id="userAvatar"></div>
+                        <span class="user-profile__name" id="userName">Загрузка...</span>
+                        <div class="user-profile__arrow"></div>
+                    </button>
+
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="user-dropdown__header">
+                            <div class="user-dropdown__header-name" id="dropdownName">Иван Иванов</div>
+                            <div class="user-dropdown__header-email" id="dropdownEmail">admin@gmail.com</div>
+                        </div>
+
+                        <div class="user-dropdown__menu">
+                            <a href="/profile" class="user-dropdown__item">
+                                <span class="user-dropdown__item-icon">👤</span>
+                                <span>Мой профиль</span>
+                            </a>
+                            <a href="/my-articles" class="user-dropdown__item">
+                                <span class="user-dropdown__item-icon">📝</span>
+                                <span>Мои статьи</span>
+                            </a>
+                            <a href="/bookmarks" class="user-dropdown__item">
+                                <span class="user-dropdown__item-icon">🔖</span>
+                                <span>Закладки</span>
+                            </a>
+                            <a href="/settings" class="user-dropdown__item">
+                                <span class="user-dropdown__item-icon">⚙️</span>
+                                <span>Настройки</span>
+                            </a>
+                        </div>
+
+                        <div class="user-dropdown__divider"></div>
+
+                        <div class="user-dropdown__menu">
+                            <a href="#" class="user-dropdown__item user-dropdown__logout" id="logoutBtn">
+                                <span class="user-dropdown__item-icon">🚪</span>
+                                <span>Выйти</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-page">
+        <div class="container">
+            <article class="article">
+                <!-- Хлебные крошки -->
+                <nav class="breadcrumbs">
+                    <a href="/" class="breadcrumbs__link">Главная</a>
+                    <span class="breadcrumbs__separator">/</span>
+                    <a href="#" class="breadcrumbs__link">Программирование</a>
+                    <span class="breadcrumbs__separator">/</span>
+                    <span class="breadcrumbs__current">React 18: Новые возможности</span>
+                </nav>
+
+                <!-- Заголовок статьи -->
+                <header class="article__header">
+                    <span class="article__category">Программирование</span>
+                    <h1 class="article__title">React 18: Новые возможности и как их использовать</h1>
+                    
+                    <div class="article__meta">
+                        <div class="article__author">
+                            <div class="article__author-avatar">ПП</div>
+                            <div class="article__author-info">
+                                <span class="article__author-name">Петр Петров</span>
+                                <span class="article__date">20 февраля 2026</span>
+                            </div>
+                        </div>
+                        <div class="article__stats">
+                            <span class="article__stat">⏱ 8 мин</span>
+                            <span class="article__stat">👁️ 1.2K просмотров</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Изображение -->
+                <div class="article__image">
+                    <img src="https://via.placeholder.com/1200x600/00D856/ffffff?text=React+18" alt="React 18">
+                </div>
+
+                <!-- Действия -->
+                <div class="article__actions">
+                    <button class="article__action article__action--like">
+                        <span class="article__action-icon">❤️</span>
+                        <span class="article__action-text">345</span>
+                    </button>
+                    <button class="article__action article__action--bookmark">
+                        <span class="article__action-icon">🔖</span>
+                        <span class="article__action-text">В закладки</span>
+                    </button>
+                    <button class="article__action article__action--share">
+                        <span class="article__action-icon">🔗</span>
+                        <span class="article__action-text">Поделиться</span>
+                    </button>
+                </div>
+
+                <!-- Содержание статьи -->
+                <div class="article__content">
+                    <p>React 18 принес множество новых возможностей, которые делают разработку еще более удобной и производительной. В этой статье мы рассмотрим основные нововведения и как их применять на практике.</p>
+
+                    <h2>Автоматический батчинг</h2>
+                    <p>Одно из главных улучшений React 18 - это автоматический батчинг обновлений состояния. Теперь React группирует все обновления состояния, независимо от того, где они происходят.</p>
+
+                    <pre><code>// До React 18
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React отрендерит дважды
+}, 1000);
+
+// В React 18
+setTimeout(() => {
+  setCount(c => c + 1);
+  setFlag(f => !f);
+  // React отрендерит один раз
+}, 1000);</code></pre>
+
+                    <h2>Concurrent Features</h2>
+                    <p>React 18 вводит новую концепцию конкурентного рендеринга, что позволяет React прерывать, приостанавливать и возобновлять рендеринг в зависимости от приоритета задач.</p>
+
+                    <h3>useTransition</h3>
+                    <p>Хук useTransition позволяет пометить обновления состояния как неприоритетные, что улучшает отзывчивость интерфейса.</p>
+
+                    <pre><code>const [isPending, startTransition] = useTransition();
+
+function handleClick() {
+  startTransition(() => {
+    setTab('posts');
+  });
+}</code></pre>
+
+                    <h2>Suspense для данных</h2>
+                    <p>В React 18 компонент Suspense теперь можно использовать для загрузки данных, не только для ленивой загрузки компонентов.</p>
+
+                    <blockquote>
+                        <p>React 18 - это не просто обновление, это новая эра разработки пользовательских интерфейсов с фокусом на производительность и пользовательский опыт.</p>
+                    </blockquote>
+
+                    <h2>Заключение</h2>
+                    <p>React 18 приносит множество улучшений, которые делают разработку более приятной и производительной. Начните использовать новые возможности уже сегодня!</p>
+                </div>
+
+                <!-- Теги -->
+                <div class="article__tags">
+                    <span class="article__tag">React</span>
+                    <span class="article__tag">JavaScript</span>
+                    <span class="article__tag">Frontend</span>
+                    <span class="article__tag">Web Development</span>
+                </div>
+            </article>
+
+            <!-- Комментарии -->
+            <section class="comments">
+                <h2 class="comments__title">Комментарии (12)</h2>
+                
+                <div class="comment-form">
+                    <textarea class="comment-form__textarea" placeholder="Оставьте комментарий..."></textarea>
+                    <button class="comment-form__submit">Отправить</button>
+                </div>
+
+                <div class="comments__list">
+                    <!-- Комментарий 1 -->
+                    <div class="comment">
+                        <div class="comment__avatar">АС</div>
+                        <div class="comment__content">
+                            <div class="comment__header">
+                                <span class="comment__author">Анна Смирнова</span>
+                                <span class="comment__date">2 часа назад</span>
+                            </div>
+                            <p class="comment__text">Отличная статья! Очень помогло разобраться с useTransition.</p>
+                            <div class="comment__actions">
+                                <button class="comment__action">👍 15</button>
+                                <button class="comment__action">Ответить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Комментарий 2 -->
+                    <div class="comment">
+                        <div class="comment__avatar">ИК</div>
+                        <div class="comment__content">
+                            <div class="comment__header">
+                                <span class="comment__author">Игорь Ковалев</span>
+                                <span class="comment__date">5 часов назад</span>
+                            </div>
+                            <p class="comment__text">Можете подробнее рассказать про Concurrent Mode?</p>
+                            <div class="comment__actions">
+                                <button class="comment__action">👍 8</button>
+                                <button class="comment__action">Ответить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Колонка 1: Контакты -->
+                <div class="footer__column">
+                    <div class="footer__logo">
+                        <img src="/img/logo/logo-black.png" alt="VLOGE" class="footer__logo-img">
+                    </div>
+                    <div class="footer__contacts">
+                        <a href="tel:" class="footer__phone">+7 (700) 700-70-70</a>
+                        <a href="mailto:" class="footer__email">vloge@gmail.com</a>
+                        <p class="footer__address">Алматы, Толе би/Розыбакиева 14/35</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="#" class="social-link" aria-label="ВКонтакте">
+                            ВК
+                        </a>
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            ТГ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: Курсы -->
+                <div class="footer__column">
+                    <h4 class="footer__title">Категории</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Программирование</a></li>
+                        <li><a href="#">Маркетинг</a></li>
+                        <li><a href="#">Дизайн</a></li>
+                        <li><a href="#">Аналитика</a></li>
+                        <li><a href="#">Менеджмент</a></li>
+                        <li><a href="#">Нейросети</a></li>
+                        <li><a href="#">Игры</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 3: Ученикам -->
+                <div class="footer__column">
+                    <h4 class="footer__title">О нас</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Наша миссия</a></li>
+                        <li><a href="#">Наша команда</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                        <li><a href="#">Партнёры</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 4: Документы + Интересное -->
+                <div class="footer__column">
+                    <h4 class="footer__title">Документы</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Юридическая информация</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Нижняя часть футера -->
+            <div class="footer__bottom">
+                <div class="footer__divider"></div>
+                <div class="footer__info">
+                    <p class="footer__copyright">© VLOGE 2026</p>
+                    <p class="footer__description">
+                        Мы делимся знаниями, идеями и опытом так, чтобы каждый материал был понятным, интересным и действительно полезным. Наша цель — не просто писать статьи, а помогать читателям узнавать новое, расти и находить ответы на важные для них вопросы.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/profile.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+
+        // Получить ID статьи из URL (/article/123)
+        const articleId = window.location.pathname.split('/').pop();
+        if (!articleId) return;
+
+        // ── Загрузить статью ─────────────────────────────────────────────────
+        const { article } = await API.get(`/api/articles/${articleId}`);
+        if (!article) {
+            document.querySelector('.article').innerHTML = '<p style="text-align:center;padding:60px;color:#a0aec0">Статья не найдена</p>';
+            return;
+        }
+
+        // Заголовок страницы
+        document.title = `${article.title} - VLOGE`;
+
+        // Хлебные крошки
+        document.querySelector('.breadcrumbs__link:last-of-type').textContent = article.category || 'Статья';
+        document.querySelector('.breadcrumbs__current').textContent = article.title;
+
+        // Заголовок и категория
+        document.querySelector('.article__category').textContent = article.category || '';
+        document.querySelector('.article__title').textContent = article.title;
+
+        // Автор
+        const authorParts = (article.author_name || '').split(' ');
+        const initials = (authorParts[0]?.[0] || '') + (authorParts[1]?.[0] || '');
+        const avatarEl = document.querySelector('.article__author-avatar');
+        if (article.author_avatar) {
+            avatarEl.innerHTML = `<img src="${article.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+        } else {
+            avatarEl.textContent = initials.toUpperCase();
+        }
+        document.querySelector('.article__author-name').textContent = article.author_name || '';
+        document.querySelector('.article__date').textContent = new Date(article.created_at).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+
+        // Статистика
+        const words = (article.content || '').split(/\s+/).length;
+        const readTime = Math.max(1, Math.ceil(words / 200));
+        const statsEl = document.querySelector('.article__stats');
+        statsEl.innerHTML = `
+            <span class="article__stat">⏱ ${readTime} мин</span>
+            <span class="article__stat">👁️ ${article.views} просмотров</span>
+        `;
+
+        // Обложка
+        const imgEl = document.querySelector('.article__image img');
+        if (article.cover_image) {
+            imgEl.src = article.cover_image;
+            imgEl.alt = article.title;
+        } else {
+            document.querySelector('.article__image').style.display = 'none';
+        }
+
+        // Лайки
+        document.querySelector('.article__action-text').textContent = article.likes;
+
+        // Контент (простой markdown → html)
+        const content = article.content
+            .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+            .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>')
+            .replace(/^- (.+)$/gm, '<li>$1</li>')
+            .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/^(?!<[hbupc]|<li|<ul|<bl)(.+)$/gm, '<p>$1</p>');
+        document.querySelector('.article__content').innerHTML = content;
+
+        // Теги
+        const tagsEl = document.querySelector('.article__tags');
+        try {
+            const tags = JSON.parse(article.tags || '[]');
+            tagsEl.innerHTML = tags.map(t => `<span class="article__tag">${t}</span>`).join('');
+            if (tags.length === 0) tagsEl.style.display = 'none';
+        } catch { tagsEl.style.display = 'none'; }
+
+        // ── Лайк ────────────────────────────────────────────────────────────
+        const likeBtn = document.querySelector('.article__action--like');
+        likeBtn.addEventListener('click', async () => {
+            if (!API.token()) { showToast('Войдите чтобы лайкнуть', 'error'); return; }
+            const data = await API.post(`/api/articles/${articleId}/like`, {});
+            if (data.success) {
+                likeBtn.querySelector('.article__action-text').textContent = data.likes;
+                likeBtn.style.color = data.liked ? '#e53e3e' : '';
+                showToast(data.liked ? '❤️ Лайк!' : 'Лайк убран');
+            }
+        });
+
+        // ── Закладка ─────────────────────────────────────────────────────────
+        const bookmarkBtn = document.querySelector('.article__action--bookmark');
+        bookmarkBtn.addEventListener('click', async () => {
+            if (!API.token()) { showToast('Войдите чтобы добавить в закладки', 'error'); return; }
+            const data = await API.post(`/api/bookmarks/${articleId}`, {});
+            if (data.success) {
+                bookmarkBtn.querySelector('.article__action-text').textContent = 'В закладках ✓';
+                bookmarkBtn.style.color = '#00D856';
+                showToast('🔖 Добавлено в закладки!');
+            } else {
+                // Уже в закладках — убрать
+                const del = await API.delete(`/api/bookmarks/${articleId}`);
+                if (del.success) {
+                    bookmarkBtn.querySelector('.article__action-text').textContent = 'В закладки';
+                    bookmarkBtn.style.color = '';
+                    showToast('Удалено из закладок');
+                }
+            }
+        });
+
+        // ── Поделиться ───────────────────────────────────────────────────────
+        document.querySelector('.article__action--share').addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => showToast('🔗 Ссылка скопирована!'))
+                .catch(() => showToast('Не удалось скопировать', 'error'));
+        });
+
+        // ── Комментарии ──────────────────────────────────────────────────────
+        await loadComments();
+
+        document.querySelector('.comment-form__submit').addEventListener('click', async () => {
+            if (!API.token()) { showToast('Войдите чтобы оставить комментарий', 'error'); return; }
+            const textarea = document.querySelector('.comment-form__textarea');
+            const text = textarea.value.trim();
+            if (!text) { showToast('Введите текст комментария', 'error'); return; }
+
+            const data = await API.post(`/api/articles/${articleId}/comments`, { text });
+            if (data.success) {
+                textarea.value = '';
+                showToast('Комментарий добавлен!');
+                await loadComments();
+            } else {
+                showToast(data.message || 'Ошибка', 'error');
+            }
+        });
+
+        async function loadComments() {
+            const { comments } = await API.get(`/api/articles/${articleId}/comments`);
+            const list = document.querySelector('.comments__list');
+            const title = document.querySelector('.comments__title');
+
+            title.textContent = `Комментарии (${comments.length})`;
+
+            if (comments.length === 0) {
+                list.innerHTML = '<p style="color:#a0aec0;padding:20px 0">Комментариев пока нет. Будьте первым!</p>';
+                return;
+            }
+
+            list.innerHTML = comments.map(c => {
+                const parts = (c.author_name || '').split(' ');
+                const ini = (parts[0]?.[0] || '') + (parts[1]?.[0] || '');
+                const timeAgo = getTimeAgo(c.created_at);
+                const isOwn = API.token() && JSON.parse(localStorage.getItem('userData') || '{}').id === c.user_id;
+                return `
+                    <div class="comment" data-id="${c.id}">
+                        <div class="comment__avatar">${c.author_avatar
+                            ? `<img src="${c.author_avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+                            : ini.toUpperCase()}</div>
+                        <div class="comment__content">
+                            <div class="comment__header">
+                                <span class="comment__author">${c.author_name}</span>
+                                <span class="comment__date">${timeAgo}</span>
+                            </div>
+                            <p class="comment__text">${c.text}</p>
+                            <div class="comment__actions">
+                                ${isOwn ? `<button class="comment__action comment__delete" data-id="${c.id}" style="color:#e53e3e">🗑️ Удалить</button>` : ''}
+                            </div>
+                        </div>
+                    </div>`;
+            }).join('');
+
+            // Удаление своего комментария
+            list.querySelectorAll('.comment__delete').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    if (!confirm('Удалить комментарий?')) return;
+                    const data = await API.delete(`/api/comments/${btn.dataset.id}`);
+                    if (data.success) { showToast('Комментарий удалён'); await loadComments(); }
+                });
+            });
+        }
+
+        function getTimeAgo(dateStr) {
+            // Добавляем 'Z' чтобы браузер понял что это UTC, а не локальное время
+            const normalized = dateStr.includes('Z') || dateStr.includes('+') ? dateStr : dateStr.replace(' ', 'T') + 'Z';
+            const diff = Math.floor((Date.now() - new Date(normalized)) / 1000);
+            if (diff < 60) return 'только что';
+            if (diff < 3600) return `${Math.floor(diff / 60)} мин назад`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)} ч назад`;
+            return new Date(normalized).toLocaleDateString('ru-RU');
+        }
+    });
+    </script>
+</body>
+</html>
